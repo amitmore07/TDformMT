@@ -44,5 +44,4 @@ export class AppComponent implements OnInit{
   patchdata(){
     this.singUpForm.form.patchValue(this.userDetails)
   }
-  
 }

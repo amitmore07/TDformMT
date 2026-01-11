@@ -1,4 +1,3 @@
-
 <h3 class=" bg-success text-center mt-2 p-3">
   Template Driven Form
 </h3>
@@ -7,116 +6,84 @@
 
 <div class="container mt-4" (ngSubmit)="onSubmit()">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8 offset-md-2">
       <form #singUpForm="ngForm">
+
+
         <div class="form-group">
           <label for="userName">User Name*</label>
-          <input
-          ngModel
-          name="userName"
-          #userName="ngModel"
-          required
-          pattern="[A-Za-a]+"
-          minlength="8"
-           type="text" class="form-control">
+          <input ngModel name="userName" #userName="ngModel" required pattern="[A-Za-a]+" minlength="8" type="text"
+            class="form-control">
 
-           <strong class="text-danger"
-           *ngIf="userName.touched && userName.hasError('required')"
-           >User Name is a required field!!</strong>
+          <strong class="text-danger" *ngIf="userName.touched && userName.hasError('required')">User Name is a required
+            field!!</strong>
 
-           <strong class="text-danger mr-3"
-           *ngIf="userName.dirty && userName.hasError('pattern')"
-           >User Name should have only alphabets;</strong>
+          <strong class="text-danger mr-3" *ngIf="userName.dirty && userName.hasError('pattern')">User Name should have
+            only alphabets;</strong>
 
-           <strong class="text-danger"
-           *ngIf="userName.dirty && userName.hasError('minlength')"
-           >Minimum length of User Name should be {{userName.errors?.['minlength'].requiredLength}} and actual lenght is {{userName.errors?.['minlength'].actualLength}} </strong>
+          <strong class="text-danger" *ngIf="userName.dirty && userName.hasError('minlength')">Minimum length of User
+            Name should be {{userName.errors?.['minlength'].requiredLength}} and actual length is
+            {{userName.errors?.['minlength'].actualLength}} </strong>
         </div>
 
 
         <div class="form-group">
           <label for="email">Email*</label>
-          <input
-          ngModel
-          required
-          pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
-          name="Email"
-          #email="ngModel"
-          type="text" class="form-control">
+          <input ngModel required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" name="Email"
+            #email="ngModel" type="text" class="form-control">
 
-          <strong class="text-danger"
-          *ngIf="email.touched && email.invalid"
-          >
+          <strong class="text-danger" *ngIf="email.touched && email.invalid">
             Email is required field!!
           </strong>
         </div>
 
+
+
         <div class="form-group">
-            <label for="secretQuestion">secret Question*</label>
-            <select
-            ngModel
-             name="secretQuestion"
-             #secretQuestion="ngModel"
-              id="secretQuestion"
-              class="form-control"
-              required
-              >
-              <option value="FavBook">Favourate Book</option>
-              <option value="FavSport">Favourate Sport</option>
-            </select>
+          <label for="secretQuestion">secret Question*</label>
+          <select ngModel name="secretQuestion" #secretQuestion="ngModel" id="secretQuestion" class="form-control"
+            required>
+            <option value="FavMovie">Favourate Movie</option>
+            <option value="FavSport">Favourate Sport</option>
+          </select>
 
-            <strong class="text-danger"
-            *ngIf="secretQuestion.touched && secretQuestion.hasError('required')"
-            >secret question is required field!!</strong>
-          </div>
-
-          <div class="form-group">
-            <label for="answer">Answer</label>
-            <textarea
-            ngModel
-            rows="2"
-            #Answer="ngModel"
-             name="answer" id="answer"
-             class="form-control"
-             ></textarea>
-          </div>
+          <strong class="text-danger" *ngIf="secretQuestion.touched && secretQuestion.hasError('required')">secret
+            question is required field!!</strong>
+        </div>
 
 
-          <div class="form-group">
-            <label for="isSubscribed">
-              <input 
-              ngModel
-              name="isSubscribed"
-              id="isSubscribed"
-              #isSubscribed="ngModel"
-              type="Checkbox">
-              Subscribe for daily mails
-            </label>
-          </div>
 
-          <div class="form-group">
-            <label [for]="moc.contactMode"
-            *ngFor="let moc of mocArr;"
-            >
-            <input 
-            ngModel
-            name="modeofContact"
-            type="radio"
-            [id]="moc.contactMode"
-            [value]="moc.contactMode"
-            >
+
+        <div class="form-group">
+          <label for="answer">Answer</label>
+          <textarea ngModel rows="2" #Answer="ngModel" name="answer" id="answer" class="form-control"></textarea>
+        </div>
+
+
+
+
+        <div class="form-group">
+          <label for="isSubscribed">
+            <input ngModel name="isSubscribed" id="isSubscribed" #isSubscribed="ngModel" type="Checkbox">
+            Subscribe for daily mails
+          </label>
+        </div>
+
+
+
+        <div class="form-group">
+          <label [for]="moc.contactMode" *ngFor="let moc of mocArr;">
+            <input ngModel name="modeofContact" type="radio" [id]="moc.contactMode" [value]="moc.contactMode">
             {{moc.contactMode}}
           </label>
-          </div>
+        </div>
 
-          <button class="btn btn-primary mr-3"
-          [disabled]="singUpForm.invalid"
-          >Sing Up</button>
 
-          <button
-          (click)="patchdata()"
-          type="button"
-           class="btn btn-primary">Edit</button>
+
+        <button class="btn btn-primary mr-3" [disabled]="singUpForm.invalid">Sign Up</button>
+
+
+        <button (click)="patchdata()" type="button" class="btn btn-primary">Edit</button>
       </form>
     </div>
   </div>
