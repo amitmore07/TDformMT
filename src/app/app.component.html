@@ -7,7 +7,9 @@
 <div class="container mt-4" (ngSubmit)="onSubmit()">
   <div class="row">
     <div class="col-md-8 offset-md-2">
-      <form #singUpForm="ngForm">
+     <div class="card">
+      <div class="card-body">
+         <form #singUpForm="ngForm">
 
 
         <div class="form-group">
@@ -72,7 +74,8 @@
 
 
         <div class="form-group">
-          <label [for]="moc.contactMode" *ngFor="let moc of mocArr;">
+          <label [for]="moc.contactMode" *ngFor="let moc of mocArr;" class="mr-3">
+            mode of contact: 
             <input ngModel name="modeofContact" type="radio" [id]="moc.contactMode" [value]="moc.contactMode">
             {{moc.contactMode}}
           </label>
@@ -85,6 +88,8 @@
 
         <button (click)="patchdata()" type="button" class="btn btn-primary">Edit</button>
       </form>
+      </div>
+     </div>
     </div>
   </div>
 </div>
